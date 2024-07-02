@@ -24,7 +24,7 @@ resource "random_pet" "client_name" {}
 
 resource "aws_cognito_resource_server" "this" {
   user_pool_id = var.userPoolId
-  identifier   = "https://${random_pet.client_name.id}.${local.public_domain_suffix}"
+  identifier   = "https://${random_pet.client_name.id}"
   name         = local.name
 
   dynamic "scope" {
