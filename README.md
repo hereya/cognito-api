@@ -66,9 +66,9 @@ declare global {
 }
 
 const verifier = CognitoJwtVerifier.create({
-    userPoolId: process.env.USER_POOL_ID!,
+    userPoolId: process.env.userPoolId!,
     tokenUse: "access",
-    clientId: process.env.COGNITO_CLIENT_IDS?.split(',') ?? [],
+    clientId: process.env.cognitoClientIds?.split(',') ?? [],
 });
 
 export async function verifyJWT(token: string) {
@@ -110,7 +110,7 @@ export const requireScopes = (...requiredScopes: string[]): express.RequestHandl
 
         // Check if all required scopes are present in the user's scopes
         const hasRequiredScopes = requiredScopes.map(
-            scopeToHave => `${process.env.COGNITO_RESOURCE_SERVER_IDENTIFIER}/${scopeToHave}`
+            scopeToHave => `${process.env.cognitoResourceServerId}/${scopeToHave}`
         ).every(scope => userScopes.includes(scope));
 
         if (!hasRequiredScopes) {
