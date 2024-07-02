@@ -33,10 +33,11 @@ variable "domainPrefix" {
 variable "domainSuffix" {
   type        = string
   description = "The domain suffix used for deriving the full domain name."
+  default     = null
 }
 
 variable "publicDomainSuffix" {
   type        = string
   description = "The public domain suffix used to compute the resource server identifier."
-  default = null
+  default     = null
 }
